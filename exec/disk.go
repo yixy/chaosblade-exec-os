@@ -33,6 +33,7 @@ func NewDiskCommandSpec() spec.ExpModelCommandSpec {
 			ExpActions: []spec.ExpActionCommandSpec{
 				NewFillActionSpec(),
 				NewBurnActionSpec(),
+				NewBlockActionSpec(),
 			},
 			ExpFlags: []spec.ExpFlagSpec{},
 		},
@@ -56,7 +57,7 @@ func (*DiskCommandSpec) Example() string {
 }
 
 func checkDiskExpEnv() error {
-	commands := []string{"ps", "awk", "grep", "kill", "nohup", "rm", "dd"}
+	commands := []string{"ps", "awk", "grep", "kill", "nohup", "rm", "dd", "echo", "lsblk"}
 	for _, command := range commands {
 		if !channel.IsCommandAvailable(command) {
 			return fmt.Errorf("%s command not found", command)
