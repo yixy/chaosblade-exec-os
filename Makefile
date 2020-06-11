@@ -40,11 +40,7 @@ pre_build:
 build_yaml: build/spec.go
 	$(GO) run $< $(OS_YAML_FILE_PATH)
 
-<<<<<<< HEAD
-build_osbin: build_burncpu build_burnmem build_burnio build_killprocess build_stopprocess build_changedns build_tcnetwork build_dropnetwork build_filldisk
-=======
-build_osbin: build_burncpu build_burnmem build_burnio build_blockio build_killprocess build_stopprocess build_changedns build_tcnetwork build_dropnetwork build_filldisk build_occupynetwork
->>>>>>> 42b742d... add chaos_blockio
+build_osbin: build_burncpu build_burnmem build_burnio build_blockio build_killprocess build_stopprocess build_changedns build_tcnetwork build_dropnetwork build_filldisk 
 
 build_osbin_darwin: build_burncpu build_killprocess build_stopprocess build_changedns
 
