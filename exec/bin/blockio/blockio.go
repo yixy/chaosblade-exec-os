@@ -109,7 +109,8 @@ func getMajMin(ctx context.Context)([]string,error){
 	if err != nil {
 		return nil, err
 	}
-	result := strings.Split(string(output),"\n")
+	str := string(output)
+	result := strings.Split(str,"\n")
 	return result,nil
 }
 
@@ -132,9 +133,13 @@ func updateBlkio(updateType,bytes string,ctx context.Context)error{
 	}
 	defer file.Close()
 	for _,mm:=range MajMin {
-		if mm=="" {break}
+		if mm=="" {
+			continue
+		}
 		_, err := file.WriteString(fmt.Sprintf("%s %s", mm, bytes))
-		return err
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
